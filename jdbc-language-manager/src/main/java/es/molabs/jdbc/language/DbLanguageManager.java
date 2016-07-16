@@ -163,7 +163,7 @@ public class DbLanguageManager
 	
 	public Locale normalizeLocale(Locale locale)
 	{
-		// If the locale map does not containt the locale
+		// If the locale map does not exists the locale
 		if (!localeMap.containsKey(locale))
 		{		
 			// Gets the locale lookupList, if the locale is null returns the default locale because LocaleUtils.localeLookupList returns an empty list

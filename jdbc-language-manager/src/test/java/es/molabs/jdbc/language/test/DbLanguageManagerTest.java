@@ -69,7 +69,7 @@ public class DbLanguageManagerTest
 		// Initializes the manager
 		languageManager.init();
 		
-		// Checks that the properties are loaded
+		// Checks that the keys are loaded
 		testLocalizeString(languageManager, "KEY_1", LOCALE_EN, "english_1");
 		
 		// Checks that its initialized
@@ -96,31 +96,16 @@ public class DbLanguageManagerTest
 		value = languageManager.isInitialized();
 		Assert.assertEquals("Value must be [" + expectedValue + "].", expectedValue, value);
 		
-		// Initialized the manager again
+		// Initializes the manager again
 		languageManager.init();
 		
-		// Checks that the properties are loaded
+		// Checks that the keys are loaded
 		testLocalizeString(languageManager, "KEY_1", LOCALE_EN, "english_1");
 		
 		// Checks that its initialized
 		expectedValue = true;
 		value = languageManager.isInitialized();
 		Assert.assertEquals("Value must be [" + expectedValue + "].", expectedValue, value);
-		
-		languageManager.destroy();
-	}
-	
-	@Test
-	public void testChangeDefaultLocale() throws Throwable
-	{		
-		// Checks that if a value for a locale does not exists gets the default locale value
-		testLocalizeString(languageManager, "KEY_1", new Locale("fr"), "english_1");
-		
-		// Sets a new default locale
-		languageManager.setDefaultLocale(LOCALE_ES);
-		
-		// Checks that if a value for a locale does not exists gets the default locale value
-		testLocalizeString(languageManager, "KEY_1", new Locale("fr"), "castellano_1");
 		
 		languageManager.destroy();
 	}
@@ -150,6 +135,21 @@ public class DbLanguageManagerTest
 		testLocalizeString(languageManager, "KEY_3", LOCALE_ES, "castellano_3");
 		
 		languageManager.destroy();		
+	}
+	
+	@Test
+	public void testChangeDefaultLocale() throws Throwable
+	{		
+		// Checks that if a value for a locale does not exists gets the default locale value
+		testLocalizeString(languageManager, "KEY_1", new Locale("fr"), "english_1");
+		
+		// Sets a new default locale
+		languageManager.setDefaultLocale(LOCALE_ES);
+		
+		// Checks that the default locale value has changed to the new locale
+		testLocalizeString(languageManager, "KEY_1", new Locale("fr"), "castellano_1");
+		
+		languageManager.destroy();
 	}
 	
 	@Test 
