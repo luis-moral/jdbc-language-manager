@@ -1,0 +1,25 @@
+apply from : '../gradle/java/java.gradle'
+apply from : '../gradle/java/maven.gradle'
+apply from : '../gradle/license/license.gradle'
+apply from : '../gradle/eclipse/java.gradle'
+
+group = 'es.molabs'
+version = '1.0.0'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Jdbc Language Manager',
+                   'Implementation-Version': version
+    }
+}
+
+dependencies {
+	compile group: 'org.slf4j', name: 'slf4j-api', version: '[1.7,1.8)'
+	compile group: 'es.molabs', name: 'jdbc-utils', version: '[1.0,1.1)'
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '[3.4,3.5)'	
+	
+	testCompile group: 'junit', name: 'junit', version: '[4,5)'
+	testCompile group: 'org.mockito', name: 'mockito-core', version: '[2.0,2.1)'
+	testCompile group: 'commons-io', name: 'commons-io', version: '[2.4,2.5)'
+	testCompile group: 'com.h2database', name: 'h2', version: '[1.4, 1.5)'
+}

@@ -1,2 +1,9 @@
 # jdbc-language-manager
-Database based localization.
+
+```
+<dependency>
+    <groupId>es.molabs</groupId>
+    <artifactId>jdbc-language-manager</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
