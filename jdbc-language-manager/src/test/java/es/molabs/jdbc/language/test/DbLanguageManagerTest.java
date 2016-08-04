@@ -53,16 +53,16 @@ public class DbLanguageManagerTest
 		// Destroys the manager
 		languageManager.destroy();
 		
-		Throwable exception = null;
+		Exception exception = null;
 				
 		// Checks that an IllegalStateException is thrown
 		try
 		{
 			languageManager.getLocalizedKey("KEY_1", LOCALE_EN, dbManager.getDbNonTransaction());
 		}
-		catch (Throwable t)
+		catch (Exception e)
 		{
-			exception = t;
+			exception = e;
 		}
 		Assert.assertEquals("Value must be [" + true + "].", true, exception.getClass() == IllegalStateException.class);
 		
@@ -85,9 +85,9 @@ public class DbLanguageManagerTest
 		{
 			languageManager.getLocalizedKey("KEY_1", LOCALE_EN, dbManager.getDbNonTransaction());
 		}
-		catch (Throwable t)
+		catch (Exception e)
 		{
-			exception = t;
+			exception = e;
 		}
 		Assert.assertEquals("Value must be [" + true + "].", true, exception.getClass() == IllegalStateException.class);
 		
